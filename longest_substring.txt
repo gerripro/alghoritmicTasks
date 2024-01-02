@@ -1,0 +1,16 @@
+int lengthOfLongestSubstring(String s) {
+  Map<String, int> comboMap = {};
+  int maxLength = 0;
+  int left = 0;
+  
+  for (int right = 0; right < s.length; right++) {
+    String rightLetter = s[right];
+    if (comboMap.containsKey(rightLetter) && comboMap[rightLetter]! >= left) {
+      left = comboMap[rightLetter]! + 1;
+    }
+    int comboLength = right - left + 1;
+    maxLength = maxLength < comboLength? comboLength: maxLength;
+    comboMap[rightLetter] = right;
+  }
+  return maxLength;
+}
