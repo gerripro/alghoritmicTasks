@@ -1,0 +1,31 @@
+int fourSumCount(
+    List<int> nums1, List<int> nums2, List<int> nums3, List<int> nums4) {
+  int tupleCounter = 0;
+
+  int firstLength = nums1.length;
+  int secondLength = nums2.length;
+  int thirdLength = nums3.length;
+  int fourthLength = nums4.length;
+
+  Map<int, int> sumCount = {};
+  for (int first = 0; first < firstLength; first++) {
+    for (int scnd = 0; scnd < secondLength; scnd++) {
+      int sum = nums1[first] + nums2[scnd];
+      if (sumCount[sum] != null) {
+        sumCount[sum] = sumCount[sum]! + 1;
+      } else {
+        sumCount[sum] = 1;
+      }
+    }
+  }
+  for (int thrd = 0; thrd < thirdLength; thrd++) {
+    for (int fourth = 0; fourth < fourthLength; fourth++) {
+      int sum = nums3[thrd] + nums4[fourth];
+      if (sumCount[-sum] != null) {
+        tupleCounter += sumCount[-sum]!;
+      }
+    }
+  }
+
+  return tupleCounter;
+}
