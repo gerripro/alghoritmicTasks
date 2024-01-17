@@ -1,0 +1,10 @@
+
+  List<int> topKFrequent(List<int> nums, int k) {
+    Map<int,int> frequencyMap = {};
+    for (int num in nums) {
+      frequencyMap[num] = (frequencyMap[num] ?? 0) + 1;
+    }
+    List<int> uniqNums = frequencyMap.keys.toList();
+    uniqNums.sort((a,b)=>frequencyMap[b]! - frequencyMap[a]!);
+    return uniqNums.take(k).toList();
+  }
