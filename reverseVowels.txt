@@ -1,0 +1,26 @@
+public static String reverseVowels(String s) {
+        int length = s.length();
+        int leftPointer = 0;
+        int rightPointer = length -1;
+        char[] inputArray = s.toCharArray();
+        Set<Character> vowels = Set.of('a','A','e','E','i','I','o','O','u','U','y','Y');
+        
+        while (leftPointer < rightPointer) {
+            
+            if (!vowels.contains(inputArray[leftPointer])) {
+                leftPointer++;
+            }
+            if (!vowels.contains(inputArray[rightPointer])) {
+                rightPointer--;
+            }
+            char leftLetter = inputArray[leftPointer];
+            char rightLetter = inputArray[rightPointer];
+            if (vowels.contains(leftLetter) && vowels.contains(rightLetter)) {
+                inputArray[leftPointer] = rightLetter;
+                inputArray[rightPointer] = leftLetter;
+                leftPointer++;
+                rightPointer--;
+            }
+        }
+        return new String(inputArray);
+    }
